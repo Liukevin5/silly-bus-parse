@@ -55,24 +55,16 @@ app.post('/upload', function (req, res) {
       console.log('');
 
 
-      b(newpath, fields); // this is supposed to read a pdf file, then make a .txt file. 
-      c(newpath); // takes the said .txt file and gets important lines from it.[this needs to run after b() finishes]
+      b(newpath, fields, (() => c(newpath))); // this is supposed to read a pdf file, then make a .txt file. 
 
 
       res.end();
-
-
-
-
-
-
-
 
     });
 
   }
 
-  function b(newpath, fields) {
+  function b(newpath, fields, callback) {
 
 
     console.log(newpath);
@@ -81,6 +73,7 @@ app.post('/upload', function (req, res) {
 
     ocr.extract(newpath, fields.parseType);// we need to block this function somehow
 
+    callback();
 
 
   }
