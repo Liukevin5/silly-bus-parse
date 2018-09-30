@@ -54,9 +54,7 @@ app.post('/upload', function (req, res) {
       console.log('');
       console.log('');
 
-
-      b(newpath, fields); // this is supposed to read a pdf file, then make a .txt file. 
-      c(newpath); // takes the said .txt file and gets important lines from it.[this needs to run after b() finishes]
+      console.log(b(newpath, fields)); 
 
 
       res.end();
@@ -79,20 +77,13 @@ app.post('/upload', function (req, res) {
     console.log(fields);
     console.log(fields.parseType);
 
-    ocr.extract(newpath, fields.parseType);// we need to block this function somehow
+   var pruned =  ocr.extract(newpath, fields.parseType);// we need to block this function somehow
 
-
-
+    console.log('b{');
+   console.log( pruned);
+   console.log('}');
   }
 
-  function c(newpath) {
-
-    const pruner = require('./read');
-    pruned = pruner.prune(newpath);
-    res.write(pruned);
-    console.log(pruned);
-
-  }
 
 
 
