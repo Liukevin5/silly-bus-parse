@@ -37,8 +37,8 @@ app.post('/upload', function (req, res) {
       newpath = currentPath + '/uploads/' + timeStamp + files.filetoupload.name;
       //
       //  console.log(currentPath);
-      console.log(files.filetoupload.name);
-      console.log(fields);
+      // console.log(files.filetoupload.name);
+      // console.log(fields);
       //
 
 
@@ -47,25 +47,14 @@ app.post('/upload', function (req, res) {
         res.write('File uploaded and moved!');
 
       });
-      console.log(newpath);
-      console.log(fields);
-      console.log('');
-      console.log('');
-      console.log('');
-      console.log('');
+      // console.log(newpath);
+      // console.log(fields);
+      // console.log('');
+      // console.log('');
+      // console.log('');
+      // console.log('');
 
-      console.log(b(newpath, fields)); 
-
-
-      res.end();
-
-
-
-
-
-
-
-
+      console.log(b(newpath, fields));
     });
 
   }
@@ -73,23 +62,21 @@ app.post('/upload', function (req, res) {
   function b(newpath, fields) {
 
 
-    console.log(newpath);
-    console.log(fields);
-    console.log(fields.parseType);
+    // console.log(newpath);
+    // console.log(fields);
+    // console.log(fields.parseType);
 
-   var pruned =  ocr.extract(newpath, fields.parseType);// we need to block this function somehow
 
-    console.log('b{');
-   console.log( pruned);
-   console.log('}');
+
+
+    ocr.extract(newpath, fields.parseType)
+    .then(pruned => res.send(pruned))
+    .catch(err => res.send(err));
+
+    // console.log('b{');
+    // console.log( pruned);
+    // console.log('}');
   }
-
-
-
-
-
-
-
 });
 
 

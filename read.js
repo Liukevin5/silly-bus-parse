@@ -1,6 +1,3 @@
-
-
-
 const bag = [
     'homework',
     'hw',
@@ -196,6 +193,6 @@ function send(){
 // console.log(p[0].start.knownValues.day);
 // console.log(tags);
 
-// p = chrono.parse('This schedule lists important dates (exams, project release and due dates, etc.). The white-background items show the');
+// p = chrono.parse('This schedule lists important dates (exams, project release and due dates, etc.). The white-background items show the');
 // console.log(p);
 // console.log(p.length);// if length is zero, no date is found
